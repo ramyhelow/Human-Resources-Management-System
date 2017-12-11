@@ -8,6 +8,7 @@ package Controller.MainControllers;
 import Model.DBFacade;
 import View.Frames.AppFrame;
 import View.Frames.FrameFactory;
+import View.Frames.MainFrames.LoginFrame;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.sql.SQLException;
@@ -35,14 +36,19 @@ public class LoginController {
     private LoginController() {
         loginFrame = aFactory.getFrame("login");
         loginFrame.setConfirmActionListener(LoginButtonAction());
-        showLoginFrame();
     }
     
     public static LoginController getLoginController(){
         if(loginController==null){
             loginController=new LoginController();
         }
+        loginController.showLoginFrame();
+        loginController.clearFields();
         return loginController;
+    }
+    
+    public void clearFields(){
+        loginFrame.clearFields();
     }
 
     public void showLoginFrame() {

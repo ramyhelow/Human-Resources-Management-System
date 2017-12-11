@@ -5,7 +5,6 @@
  */
 package Controller.SubControllers;
 
-
 import Controller.MainControllers.MainController;
 import Model.DBFacade;
 import View.Frames.AppFrame;

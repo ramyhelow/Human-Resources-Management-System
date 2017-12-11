@@ -57,5 +57,9 @@ public class DBFacade {
     public Employee getEmployeeByID(String ID) throws SQLException, ClassNotFoundException{
         return employees.getEmployeeByID(ID);
     }
+    
+    public boolean updateEmployee(Employee emp) throws SQLException, ClassNotFoundException{
+        return employees.UpdateEmployee(emp);
+    }
 }
 

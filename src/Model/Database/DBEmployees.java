@@ -137,4 +137,28 @@ aResultSet.beforeFirst();
         }
         return emp;
     }
+    
+    public boolean UpdateEmployee(Employee emp) throws SQLException, ClassNotFoundException{
+        aDBConnection = DBConnection.getInstance();
+        aPreparedStatement
+                = aDBConnection.getConnection().prepareStatement("UPDATE EMPLOYEES SET FNAME=?,MNAME=?,LNAME=?,EMAIL=?,PHONENUMBER=?,AGE=?,POSITION=?,SALARY=?,DEPARTMENT=?,ABSENTDAYS=? WHERE ID=? ");
+
+        aPreparedStatement.setString(1, emp.getfName());
+        aPreparedStatement.setString(2, emp.getmName());
+        aPreparedStatement.setString(3, emp.getlName());
+        aPreparedStatement.setString(4, emp.getEmail());
+        aPreparedStatement.setString(5, emp.getPhoneNumber());
+        aPreparedStatement.setString(6, emp.getAge());
+        aPreparedStatement.setString(7, emp.getPosition());
+        aPreparedStatement.setString(8, emp.getSalary());
+        aPreparedStatement.setString(9, emp.getDepartment());
+        aPreparedStatement.setString(10, emp.getAbsentDays());
+        aPreparedStatement.setString(11, emp.getID());
+
+        if (!aPreparedStatement.execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

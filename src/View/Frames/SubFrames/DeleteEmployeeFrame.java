@@ -248,6 +248,11 @@ public class DeleteEmployeeFrame extends javax.swing.JFrame implements AppFrame 
         return jTextFieldID.getText();
     }
 
+    @Override
+    public void clearFields() {
+        jTextFieldID.setText("");
+    }
+
 
     
     

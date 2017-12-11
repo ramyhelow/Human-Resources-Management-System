@@ -77,7 +77,7 @@ public class UpdateEmployeeController {
                         hideSearchFrame();
                         updateFrame.setEmployeeData(emp);
                         showUpdateFrame();
-                        
+                        searchFrame.clearFields();
                     }
                     else{
                         JOptionPane.showMessageDialog(null, "Employee Doesn't Exist");

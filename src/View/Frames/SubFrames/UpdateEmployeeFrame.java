@@ -500,19 +500,20 @@ public class UpdateEmployeeFrame extends javax.swing.JFrame implements AppFrame 
         emp.setAbsentDays(jSpinnerAbsentDays.getValue().toString());
         return emp;
     }
-    
+
     @Override
-    public void setEmployeeData(Employee emp){
+    public void setEmployeeData(Employee emp) {
         jTextFieldID.setText(emp.getID());
         jTextFieldFirstName.setText(emp.getfName());
         jTextFieldMiddleName.setText(emp.getmName());
         jTextFieldLastName.setText(emp.getlName());
         jTextFieldEmail.setText(emp.getEmail());
         jTextFieldPhoneNumber.setText(emp.getPhoneNumber());
-        jSpinnerSalary.setValue(emp.getSalary());
+        jTextFieldPosition.setText(emp.getPosition());
+        jSpinnerSalary.setValue(Integer.valueOf(emp.getSalary()));
         jComboBoxDepartment.setSelectedItem(emp.getDepartment());
-        jSpinnerAge.setValue(emp.getAge());
-        jSpinnerAbsentDays.setValue(emp.getAbsentDays());
+        jSpinnerAge.setValue(Integer.valueOf(emp.getAge()));
+        jSpinnerAbsentDays.setValue(Integer.valueOf(emp.getAbsentDays()));
     }
 
 }

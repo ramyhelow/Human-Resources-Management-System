@@ -26,6 +26,10 @@ public class MainController {
     AppFrame mainFrame;
     DBFacade db = DBFacade.getDBFacade();
 
+        public static void main(String[] args) throws SQLException, ClassNotFoundException {
+        getMainController();
+    }
+    
     private MainController() throws SQLException, ClassNotFoundException {
         mainFrame = aFactory.getFrame("main");
         mainFrame.setLogoutListener(LogoutButtonAction());
