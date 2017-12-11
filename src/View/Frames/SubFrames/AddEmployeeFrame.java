@@ -7,7 +7,10 @@ package View.Frames.SubFrames;
 
 import Entities.Employee;
 import View.Frames.AppFrame;
+import java.awt.Color;
 import java.awt.event.ActionListener;
+import javax.swing.BorderFactory;
+import javax.swing.border.Border;
 
 /**
  *
@@ -444,6 +447,74 @@ public class AddEmployeeFrame extends javax.swing.JFrame implements AppFrame{
         emp.setAge(jSpinnerAge.getValue().toString());
         return emp;
     }
+
+    @Override
+    public boolean validateFields() {
+        boolean valid = true;
+        Border borderInvalid = BorderFactory.createLineBorder(Color.red);
+        Border borderValid = BorderFactory.createLineBorder(Color.BLACK);
+        if(jTextFieldFirstName.getText().isEmpty()){
+            jTextFieldFirstName.setBorder(borderInvalid);
+            valid=false;
+        }
+        else{
+            jTextFieldFirstName.setBorder(borderValid);
+        }
+        if(jTextFieldMiddleName.getText().isEmpty()){
+            jTextFieldMiddleName.setBorder(borderInvalid);
+            valid=false;
+        }
+        else{
+            jTextFieldMiddleName.setBorder(borderValid);
+        }
+        if(jTextFieldLastName.getText().isEmpty()){
+            jTextFieldLastName.setBorder(borderInvalid);
+            valid=false;
+        }
+        else{
+            jTextFieldLastName.setBorder(borderValid);
+        }
+        if(jTextFieldEmail.getText().isEmpty()){
+            jTextFieldEmail.setBorder(borderInvalid);
+            valid=false;
+        }
+        else{
+            jTextFieldEmail.setBorder(borderValid);
+        }
+        if(jTextFieldPhoneNumber.getText().isEmpty()){
+            jTextFieldPhoneNumber.setBorder(borderInvalid);
+            valid=false;
+        }
+        else{
+            jTextFieldPhoneNumber.setBorder(borderValid);
+        }
+        if(jTextFieldPosition.getText().isEmpty()){
+            jTextFieldPosition.setBorder(borderInvalid);
+            valid=false;
+        }
+        else{
+            jTextFieldPosition.setBorder(borderValid);
+        }
+        if(jSpinnerSalary.getValue().toString().isEmpty()){
+            jTextFieldPosition.setBorder(borderInvalid);
+            valid=false;
+        }
+        else{
+            jTextFieldPosition.setBorder(borderValid);
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        return valid;
+    }
+    
+    
 
     
     

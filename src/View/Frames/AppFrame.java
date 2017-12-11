@@ -50,6 +50,8 @@ public interface AppFrame {
     
     default public void setSearchIconListener(MouseListener listener){}
     
-    
+    default public boolean validateFields(){
+        return true;
+    }
     
 }
