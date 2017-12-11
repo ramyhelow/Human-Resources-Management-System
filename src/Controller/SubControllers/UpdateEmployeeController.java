@@ -5,6 +5,7 @@
  */
 package Controller.SubControllers;
 
+import Controller.MainControllers.MainController;
 import Entities.Employee;
 import Model.DBFacade;
 import View.Frames.AppFrame;
@@ -28,12 +29,11 @@ public class UpdateEmployeeController {
     DBFacade db = DBFacade.getDBFacade();
 
     private UpdateEmployeeController() {
-        //     aFrameFacade.getAddEmployeeFrame();
         searchFrame = aFactory.getFrame("search");
         updateFrame = aFactory.getFrame("update");
         searchFrame.setConfirmActionListener(searchAction());
         searchFrame.setCancelActionListener(cancelSearchAction());
-       // updateFrame.setConfirmActionListener(listener);
+        updateFrame.setConfirmActionListener(updateAction());
         updateFrame.setCancelActionListener(cancelUpdateAction());
         showSearchFrame();
     }
@@ -70,15 +70,43 @@ public class UpdateEmployeeController {
             public void actionPerformed(ActionEvent e) {
                 try {
                     
-                    Employee emp = db.getEmployeeByID(updateFrame.getID());
+                    Employee emp = db.getEmployeeByID(searchFrame.getID());
                  
                     if(emp.getID()!="0"){
+                        JOptionPane.showMessageDialog(null, "Employee Exists");
                         hideSearchFrame();
                         updateFrame.setEmployeeData(emp);
                         showUpdateFrame();
+                        
                     }
                     else{
                         JOptionPane.showMessageDialog(null, "Employee Doesn't Exist");
+                    }
+                        
+                } catch (SQLException ex) {
+                    Logger.getLogger(UpdateEmployeeController.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(UpdateEmployeeController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+               
+            }
+        };
+    }
+    
+        public ActionListener updateAction(){
+        return new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                  
+                    Employee emp = updateFrame.getEmployeeData();
+                    if(db.updateEmployee(emp)){
+                        JOptionPane.showMessageDialog(null, "Employee Updated Successfully");
+                        hideUpdateFrame();
+                        MainController.getMainController();
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null, "Update Not Successful");
                     }
                         
                 } catch (SQLException ex) {
