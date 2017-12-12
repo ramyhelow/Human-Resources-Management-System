@@ -44,10 +44,6 @@ public interface AppFrame {
     default public void setLogoutListener(MouseListener listener){}
     
     default public void setAddIconListener(MouseListener listener){}
-//    
-//    default public void setUpdateIconListener(MouseListener listener){}
-//    
-//    default public void setDeleteIconListener(MouseListener listener){}
     
     default public void setSearchIconListener(MouseListener listener){}
     

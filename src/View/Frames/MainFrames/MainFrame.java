@@ -12,6 +12,8 @@ import java.awt.event.MouseListener;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
@@ -603,7 +605,6 @@ public class MainFrame extends javax.swing.JFrame implements AppFrame {
     private javax.swing.JPanel main;
     // End of variables declaration//GEN-END:variables
 
-
     @Override
     public void showFrame() {
         setVisible(true);
@@ -628,7 +629,7 @@ public class MainFrame extends javax.swing.JFrame implements AppFrame {
         jTableEmp.setModel(tableModel);
 
         jTableEmp.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-        
+
         jTableEmp.setAutoCreateRowSorter(true);
 
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
@@ -652,7 +653,6 @@ public class MainFrame extends javax.swing.JFrame implements AppFrame {
 //    public void setDeleteIconListener(MouseListener listener) {
 //        jLabelDeleteIcon.addMouseListener(listener);
 //    }
-
     @Override
     public void setSearchIconListener(MouseListener listener) {
         jLabelSearchIcon.addMouseListener(listener);
@@ -662,5 +662,21 @@ public class MainFrame extends javax.swing.JFrame implements AppFrame {
     public void setLogoutListener(MouseListener listener) {
         jLabelLogout.addMouseListener(listener);
     }
-
+//
+//    public String SelectedRow() {
+//        jTableEmp.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+//            @Override
+//            public void valueChanged(ListSelectionEvent lse) {
+//                int row = jTableEmp.getSelectedRow();
+//
+//                String s = (String) jTableEmp.getValueAt(row, 0)
+//                        }
+//        }
+//        );
+//
+//    }
+//
+//}
+//        return null;
+//}
 }

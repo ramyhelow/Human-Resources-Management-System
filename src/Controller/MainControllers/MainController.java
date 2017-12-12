@@ -23,8 +23,8 @@ public class MainController {
 
     static MainController mainController = null;
     FrameFactory aFactory = new FrameFactory();
-    AppFrame mainFrame;
-    DBFacade db = DBFacade.getDBFacade();
+    static AppFrame mainFrame;
+    static DBFacade db = DBFacade.getDBFacade();
 
         public static void main(String[] args) throws SQLException, ClassNotFoundException {
         getMainController();
@@ -44,7 +44,6 @@ public class MainController {
             mainController=new MainController();
         }
         mainController.showMainFrame();
-        mainController.fillTable();
         return mainController;
     }
     
@@ -56,7 +55,7 @@ public class MainController {
         mainFrame.hideFrame();
     }
 
-    public void fillTable() throws SQLException, ClassNotFoundException {
+    public static void fillTable() throws SQLException, ClassNotFoundException {
         mainFrame.fillTable(db.getEmployeeData(), db.getEmployeeColumns());
     }
 

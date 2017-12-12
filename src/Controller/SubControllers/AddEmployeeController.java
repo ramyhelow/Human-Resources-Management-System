@@ -70,7 +70,7 @@ public class AddEmployeeController {
             public void actionPerformed(ActionEvent e) {
                 try {
                     addEmployee();
-                    MainController.getMainController();
+                    MainController.fillTable();
                 } catch (SQLException ex) {
                     Logger.getLogger(AddEmployeeController.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (ClassNotFoundException ex) {
