@@ -100,44 +100,44 @@ public class DBEmployees {
     }
 
     public Employee getEmployeeByID(String ID) throws SQLException, ClassNotFoundException {
-        aDBConnection = DBConnection.getInstance();
-//        aPreparedStatement
-//                = aDBConnection.getConnection().prepareStatement("SELECT * FROM EMPLOYEES WHERE ID=?");
-//        aPreparedStatement.setString(1, ID);
-//        aResultSet = aPreparedStatement.executeQuery();
-//       
-        String query = ("SELECT * FROM EMPLOYEES WHERE ID="+ID);
-        aStatement = aDBConnection.getStatement();
-        aResultSet = aStatement.executeQuery(query);
-        
-        
+
         Employee emp = new Employee();
         emp.setID("0");
         
-//        aResultSet.beforeFirst();
-aResultSet.beforeFirst();
-        if(aResultSet.next()){
-        String id = String.valueOf(aResultSet.getInt("ID"));
-        String fName = aResultSet.getString("FName");
-        String mName = aResultSet.getString("MName");
-        String lName = aResultSet.getString("LName");
-        String email = aResultSet.getString("eMail");
-        String phone = aResultSet.getString("PhoneNumber");
-        String age = aResultSet.getString("Age");
-        String position = aResultSet.getString("Position");
-        String dep = aResultSet.getString("Department");
-        String sal = aResultSet.getString("Salary");
-        String absent = aResultSet.getString("AbsentDays");
-        
-        emp = new Employee(id, fName, mName, lName, email, phone, position, sal, age, dep, absent);
+        if(ID.isEmpty()||!ID.matches("^[0-9]+$")){
+            return emp;
         }
-        else{
+        
+        aDBConnection = DBConnection.getInstance();
+        String query = ("SELECT * FROM EMPLOYEES WHERE ID=" + ID);
+        aStatement = aDBConnection.getStatement();
+        aResultSet = aStatement.executeQuery(query);
+
+        
+
+//        aResultSet.beforeFirst();
+        aResultSet.beforeFirst();
+        if (aResultSet.next()) {
+            String id = String.valueOf(aResultSet.getInt("ID"));
+            String fName = aResultSet.getString("FName");
+            String mName = aResultSet.getString("MName");
+            String lName = aResultSet.getString("LName");
+            String email = aResultSet.getString("eMail");
+            String phone = aResultSet.getString("PhoneNumber");
+            String age = aResultSet.getString("Age");
+            String position = aResultSet.getString("Position");
+            String dep = aResultSet.getString("Department");
+            String sal = aResultSet.getString("Salary");
+            String absent = aResultSet.getString("AbsentDays");
+
+            emp = new Employee(id, fName, mName, lName, email, phone, position, sal, age, dep, absent);
+        } else {
             System.out.println("NO ITEMS");
         }
         return emp;
     }
-    
-    public boolean UpdateEmployee(Employee emp) throws SQLException, ClassNotFoundException{
+
+    public boolean UpdateEmployee(Employee emp) throws SQLException, ClassNotFoundException {
         aDBConnection = DBConnection.getInstance();
         aPreparedStatement
                 = aDBConnection.getConnection().prepareStatement("UPDATE EMPLOYEES SET FNAME=?,MNAME=?,LNAME=?,EMAIL=?,PHONENUMBER=?,AGE=?,POSITION=?,SALARY=?,DEPARTMENT=?,ABSENTDAYS=? WHERE ID=? ");
@@ -160,5 +160,5 @@ aResultSet.beforeFirst();
             return false;
         }
     }
-    
+
 }

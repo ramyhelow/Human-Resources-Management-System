@@ -843,9 +843,9 @@ public class EmployeeInfoFrame extends javax.swing.JFrame implements AppFrame {
     }
 
     @Override
-    public void fillTable(Object[][] employeeData, String[] employeeColumns) {
+    public void fillTable(Object[][] reportData, String[] reportColumns) {
 //        jTableEmp.setModel(new DefaultTableModel());
-        DefaultTableModel tableModel = new DefaultTableModel(employeeData, employeeColumns) {
+        DefaultTableModel tableModel = new DefaultTableModel(reportData, reportColumns) {
 
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -861,7 +861,7 @@ public class EmployeeInfoFrame extends javax.swing.JFrame implements AppFrame {
 
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);
-        for (int x = 0; x < employeeColumns.length; x++) {
+        for (int x = 0; x < reportColumns.length; x++) {
             jTableRep.getColumnModel().getColumn(x).setCellRenderer(centerRenderer);
         }
     }

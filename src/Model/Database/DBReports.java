@@ -38,10 +38,10 @@ public class DBReports {
         int i = 0;
         aResultSet.beforeFirst();
         while (aResultSet.next()) {
-            data[i][0] = aResultSet.getString("NAME");
-            data[i][1] = aResultSet.getString("TYPE");
-            data[i][2] = aResultSet.getString("TEXT");
-
+            data[i][0] = aResultSet.getString("REP_ID");
+            data[i][1] = aResultSet.getString("NAME");
+            data[i][2] = aResultSet.getString("TYPE");
+            data[i][3] = aResultSet.getString("TEXT");
             i++;
         }
 

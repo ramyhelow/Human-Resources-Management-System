@@ -61,7 +61,10 @@ public class EmployeeInfoController {
         searchFrame.hideFrame();
     }
 
-    public void showEmployeeFrame() throws SQLException, ClassNotFoundException {
+    public static void showEmployeeFrame(Employee emp) throws SQLException, ClassNotFoundException {
+        getEmployeeInfoController();
+        employeeInfoFrame.setEmployeeData(emp);
+        EmployeeInfoController.hideSearchFrame();
         employeeInfoFrame.showFrame();
         fillTable(employeeInfoFrame.getID());
     }
@@ -79,13 +82,11 @@ public class EmployeeInfoController {
                     Employee emp = db.getEmployeeByID(searchFrame.getID());
 
                     if (emp.getID() != "0") {
-                        JOptionPane.showMessageDialog(null, "Employee Exists");
                         hideSearchFrame();
-                        employeeInfoFrame.setEmployeeData(emp);
-                        showEmployeeFrame();
+                        showEmployeeFrame(emp);
                         searchFrame.clearFields();
                     } else {
-                        JOptionPane.showMessageDialog(null, "Employee Doesn't Exist");
+                        JOptionPane.showMessageDialog(null, "Invalid ID");
                     }
 
                 } catch (SQLException ex) {

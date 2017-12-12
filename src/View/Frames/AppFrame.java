@@ -8,7 +8,9 @@ package View.Frames;
 import Entities.Employee;
 import Entities.Report;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseListener;
+import javax.swing.JTable;
 
 /**
  *
@@ -62,5 +64,9 @@ public interface AppFrame {
         return null;
     }
     
+    default public void setJTableMouseAdapter(MouseAdapter adapter){}
     
+    default public JTable getJTable(){
+        return null;
+    }
 }

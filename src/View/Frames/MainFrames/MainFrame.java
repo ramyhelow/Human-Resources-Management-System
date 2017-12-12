@@ -8,6 +8,9 @@ package View.Frames.MainFrames;
 import View.Frames.AppFrame;
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.Point;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -660,21 +663,16 @@ public class MainFrame extends javax.swing.JFrame implements AppFrame {
     public void setLogoutListener(MouseListener listener) {
         jLabelLogout.addMouseListener(listener);
     }
-//
-//    public String SelectedRow() {
-//        jTableEmp.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-//            @Override
-//            public void valueChanged(ListSelectionEvent lse) {
-//                int row = jTableEmp.getSelectedRow();
-//
-//                String s = (String) jTableEmp.getValueAt(row, 0)
-//                        }
-//        }
-//        );
-//
+
+    @Override
+    public void setJTableMouseAdapter(MouseAdapter adapter) {
+        jTableEmp.addMouseListener(adapter);
+
+    }
+
+//    @Override
+//    public JTable getJTable() {
+//        return jTableEmp;
 //    }
-//
-//}
-//        return null;
-//}
+
 }
