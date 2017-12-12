@@ -632,7 +632,7 @@ public class EmployeeInfoFrame extends javax.swing.JFrame implements AppFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EmployeeInfoFrame();
+                new EmployeeInfoFrame().showFrame();
             }
         });
     }
