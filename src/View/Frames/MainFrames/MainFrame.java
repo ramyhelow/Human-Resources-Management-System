@@ -5,11 +5,9 @@
  */
 package View.Frames.MainFrames;
 
-import Entities.Employee;
 import View.Frames.AppFrame;
 import java.awt.Color;
 import java.awt.Cursor;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -60,13 +58,9 @@ public class MainFrame extends javax.swing.JFrame implements AppFrame {
         jLabelAddIcon = new javax.swing.JLabel();
         jPanelSearchIcon = new javax.swing.JPanel();
         jLabelSearchIcon = new javax.swing.JLabel();
-        jPanelDeleteIcon = new javax.swing.JPanel();
-        jLabelDeleteIcon = new javax.swing.JLabel();
-        jPanelEditIcon = new javax.swing.JPanel();
-        jLabelUpdateIcon = new javax.swing.JLabel();
         main = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableEmp = new javax.swing.JTable();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -275,9 +269,9 @@ public class MainFrame extends javax.swing.JFrame implements AppFrame {
         jPanelAddIconLayout.setHorizontalGroup(
             jPanelAddIconLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAddIconLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabelAddIcon)
-                .addContainerGap())
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanelAddIconLayout.setVerticalGroup(
             jPanelAddIconLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -306,78 +300,16 @@ public class MainFrame extends javax.swing.JFrame implements AppFrame {
         jPanelSearchIcon.setLayout(jPanelSearchIconLayout);
         jPanelSearchIconLayout.setHorizontalGroup(
             jPanelSearchIconLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelSearchIconLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelSearchIconLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelSearchIcon)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanelSearchIconLayout.setVerticalGroup(
             jPanelSearchIconLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelSearchIconLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabelSearchIcon))
-        );
-
-        jPanelDeleteIcon.setBackground(new java.awt.Color(0, 102, 204));
-
-        jLabelDeleteIcon.setForeground(new java.awt.Color(0, 204, 204));
-        jLabelDeleteIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Images/delete.png"))); // NOI18N
-        jLabelDeleteIcon.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelDeleteIconMouseClicked(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabelDeleteIconMouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabelDeleteIconMouseEntered(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanelDeleteIconLayout = new javax.swing.GroupLayout(jPanelDeleteIcon);
-        jPanelDeleteIcon.setLayout(jPanelDeleteIconLayout);
-        jPanelDeleteIconLayout.setHorizontalGroup(
-            jPanelDeleteIconLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDeleteIconLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelDeleteIcon)
-                .addContainerGap())
-        );
-        jPanelDeleteIconLayout.setVerticalGroup(
-            jPanelDeleteIconLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDeleteIconLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabelDeleteIcon))
-        );
-
-        jPanelEditIcon.setBackground(new java.awt.Color(0, 102, 204));
-
-        jLabelUpdateIcon.setForeground(new java.awt.Color(0, 204, 204));
-        jLabelUpdateIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Images/edit.png"))); // NOI18N
-        jLabelUpdateIcon.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelUpdateIconMouseClicked(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabelUpdateIconMouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabelUpdateIconMouseEntered(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanelEditIconLayout = new javax.swing.GroupLayout(jPanelEditIcon);
-        jPanelEditIcon.setLayout(jPanelEditIconLayout);
-        jPanelEditIconLayout.setHorizontalGroup(
-            jPanelEditIconLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelEditIconLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabelUpdateIcon)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanelEditIconLayout.setVerticalGroup(
-            jPanelEditIconLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelUpdateIcon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
@@ -396,7 +328,7 @@ public class MainFrame extends javax.swing.JFrame implements AppFrame {
                             .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jLabelHeader2)
                                 .addComponent(jLabelHeader1, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 196, Short.MAX_VALUE)
                 .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanelLogout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -406,12 +338,8 @@ public class MainFrame extends javax.swing.JFrame implements AppFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanelAddIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelSearchIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelEditIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelDeleteIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17))
+                .addComponent(jPanelSearchIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -433,12 +361,9 @@ public class MainFrame extends javax.swing.JFrame implements AppFrame {
                 .addGap(0, 28, Short.MAX_VALUE)
                 .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
-                        .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jPanelAddIcon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jPanelSearchIcon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jPanelDeleteIcon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jPanelEditIcon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanelAddIcon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanelSearchIcon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(4, 4, 4))
                     .addComponent(btn_employees, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addGroup(headerLayout.createSequentialGroup()
@@ -449,9 +374,9 @@ public class MainFrame extends javax.swing.JFrame implements AppFrame {
 
         jScrollPane1.setBorder(null);
 
-        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        jTable1.setForeground(new java.awt.Color(51, 51, 51));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableEmp.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jTableEmp.setForeground(new java.awt.Color(51, 51, 51));
+        jTableEmp.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -459,11 +384,11 @@ public class MainFrame extends javax.swing.JFrame implements AppFrame {
 
             }
         ));
-        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jTable1.setGridColor(new java.awt.Color(255, 255, 255));
-        jTable1.setRowHeight(20);
-        jTable1.setSelectionBackground(new java.awt.Color(0, 153, 204));
-        jScrollPane1.setViewportView(jTable1);
+        jTableEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jTableEmp.setGridColor(new java.awt.Color(255, 255, 255));
+        jTableEmp.setRowHeight(20);
+        jTableEmp.setSelectionBackground(new java.awt.Color(0, 153, 204));
+        jScrollPane1.setViewportView(jTableEmp);
 
         javax.swing.GroupLayout mainLayout = new javax.swing.GroupLayout(main);
         main.setLayout(mainLayout);
@@ -604,30 +529,6 @@ public class MainFrame extends javax.swing.JFrame implements AppFrame {
         jPanelSearchIcon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
     }//GEN-LAST:event_jLabelSearchIconMouseEntered
 
-    private void jLabelDeleteIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelDeleteIconMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabelDeleteIconMouseClicked
-
-    private void jLabelDeleteIconMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelDeleteIconMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabelDeleteIconMouseExited
-
-    private void jLabelDeleteIconMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelDeleteIconMouseEntered
-        jPanelDeleteIcon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-    }//GEN-LAST:event_jLabelDeleteIconMouseEntered
-
-    private void jLabelUpdateIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelUpdateIconMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabelUpdateIconMouseClicked
-
-    private void jLabelUpdateIconMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelUpdateIconMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabelUpdateIconMouseExited
-
-    private void jLabelUpdateIconMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelUpdateIconMouseEntered
-        jPanelEditIcon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-    }//GEN-LAST:event_jLabelUpdateIconMouseEntered
-
     int xx;
     int xy;
 
@@ -682,7 +583,6 @@ public class MainFrame extends javax.swing.JFrame implements AppFrame {
     private javax.swing.JPanel header;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabelAddIcon;
-    private javax.swing.JLabel jLabelDeleteIcon;
     private javax.swing.JLabel jLabelExit;
     private javax.swing.JLabel jLabelHeader1;
     private javax.swing.JLabel jLabelHeader2;
@@ -691,18 +591,15 @@ public class MainFrame extends javax.swing.JFrame implements AppFrame {
     private javax.swing.JLabel jLabelLogout;
     private javax.swing.JLabel jLabelMinimize;
     private javax.swing.JLabel jLabelSearchIcon;
-    private javax.swing.JLabel jLabelUpdateIcon;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanelAddIcon;
-    private javax.swing.JPanel jPanelDeleteIcon;
-    private javax.swing.JPanel jPanelEditIcon;
     private javax.swing.JPanel jPanelExit;
     private javax.swing.JPanel jPanelLogout;
     private javax.swing.JPanel jPanelMinimize;
     private javax.swing.JPanel jPanelSearchIcon;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableEmp;
     private javax.swing.JPanel main;
     // End of variables declaration//GEN-END:variables
 
@@ -719,7 +616,7 @@ public class MainFrame extends javax.swing.JFrame implements AppFrame {
 
     @Override
     public void fillTable(Object[][] employeeData, String[] employeeColumns) {
-//        jTable1.setModel(new DefaultTableModel());
+//        jTableEmp.setModel(new DefaultTableModel());
         DefaultTableModel tableModel = new DefaultTableModel(employeeData, employeeColumns) {
 
             @Override
@@ -728,14 +625,16 @@ public class MainFrame extends javax.swing.JFrame implements AppFrame {
                 return false;
             }
         };
-        jTable1.setModel(tableModel);
+        jTableEmp.setModel(tableModel);
 
-        jTable1.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+        jTableEmp.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+        
+        jTableEmp.setAutoCreateRowSorter(true);
 
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);
         for (int x = 0; x < employeeColumns.length; x++) {
-            jTable1.getColumnModel().getColumn(x).setCellRenderer(centerRenderer);
+            jTableEmp.getColumnModel().getColumn(x).setCellRenderer(centerRenderer);
         }
     }
 
@@ -744,15 +643,15 @@ public class MainFrame extends javax.swing.JFrame implements AppFrame {
         jLabelAddIcon.addMouseListener(listener);
     }
 
-    @Override
-    public void setUpdateIconListener(MouseListener listener) {
-        jLabelUpdateIcon.addMouseListener(listener);
-    }
-
-    @Override
-    public void setDeleteIconListener(MouseListener listener) {
-        jLabelDeleteIcon.addMouseListener(listener);
-    }
+//    @Override
+//    public void setUpdateIconListener(MouseListener listener) {
+//        jLabelUpdateIcon.addMouseListener(listener);
+//    }
+//
+//    @Override
+//    public void setDeleteIconListener(MouseListener listener) {
+//        jLabelDeleteIcon.addMouseListener(listener);
+//    }
 
     @Override
     public void setSearchIconListener(MouseListener listener) {

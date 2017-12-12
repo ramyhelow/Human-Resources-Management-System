@@ -20,6 +20,7 @@ public interface AppFrame {
     
     default public void setConfirmActionListener(ActionListener listener){}
     default public void setConfirmActionListener(MouseListener listener){}
+    default public void setDeleteActionListener(ActionListener listener){}
     default public void setCancelActionListener(ActionListener listener){}
     
     default public void clearFields(){}
@@ -43,10 +44,10 @@ public interface AppFrame {
     default public void setLogoutListener(MouseListener listener){}
     
     default public void setAddIconListener(MouseListener listener){}
-    
-    default public void setUpdateIconListener(MouseListener listener){}
-    
-    default public void setDeleteIconListener(MouseListener listener){}
+//    
+//    default public void setUpdateIconListener(MouseListener listener){}
+//    
+//    default public void setDeleteIconListener(MouseListener listener){}
     
     default public void setSearchIconListener(MouseListener listener){}
     

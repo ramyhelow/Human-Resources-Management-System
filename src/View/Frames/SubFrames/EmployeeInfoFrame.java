@@ -7,18 +7,21 @@ package View.Frames.SubFrames;
 
 import Entities.Employee;
 import View.Frames.AppFrame;
+import java.awt.Color;
 import java.awt.event.ActionListener;
+import javax.swing.BorderFactory;
+import javax.swing.border.Border;
 
 /**
  *
  * @author aburom
  */
-public class UpdateEmployeeFrame extends javax.swing.JFrame implements AppFrame {
+public class EmployeeInfoFrame extends javax.swing.JFrame implements AppFrame {
 
     /**
      * Creates new form AddEmployee
      */
-    public UpdateEmployeeFrame() {
+    public EmployeeInfoFrame() {
         setUndecorated(true);
         initComponents();
         setLocationRelativeTo(this);
@@ -59,13 +62,13 @@ public class UpdateEmployeeFrame extends javax.swing.JFrame implements AppFrame 
         jTextFieldID = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jSpinnerAbsentDays = new javax.swing.JSpinner();
+        ConfirmDeleteEmployeeButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabelLoginHeader = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(0, 0));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setAlignmentX(0.0F);
         jPanel1.setAlignmentY(0.0F);
 
@@ -193,6 +196,15 @@ public class UpdateEmployeeFrame extends javax.swing.JFrame implements AppFrame 
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Absent Days");
 
+        ConfirmDeleteEmployeeButton.setBackground(new java.awt.Color(204, 0, 0));
+        ConfirmDeleteEmployeeButton.setForeground(new java.awt.Color(254, 254, 254));
+        ConfirmDeleteEmployeeButton.setText("Delete");
+        ConfirmDeleteEmployeeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConfirmDeleteEmployeeButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -217,40 +229,39 @@ public class UpdateEmployeeFrame extends javax.swing.JFrame implements AppFrame 
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jSpinnerSalary, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(10, 10, 10))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(26, 26, 26)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabelEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addContainerGap()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(10, 10, 10)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSpinnerAge, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jTextFieldPosition, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jTextFieldPhoneNumber, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
                             .addComponent(jComboBoxDepartment, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSpinnerAbsentDays, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jSpinnerAbsentDays, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabelEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(36, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(89, 89, 89)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(ConfirmDeleteEmployeeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ConfirmAddEmployeeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CancelAddEmployeeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -271,7 +282,7 @@ public class UpdateEmployeeFrame extends javax.swing.JFrame implements AppFrame 
                     .addComponent(jLabel2)
                     .addComponent(jTextFieldMiddleName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(jTextFieldLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -302,10 +313,13 @@ public class UpdateEmployeeFrame extends javax.swing.JFrame implements AppFrame 
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jComboBoxDepartment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(71, 71, 71)
+                .addGap(33, 33, 33)
                 .addComponent(ConfirmAddEmployeeButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(CancelAddEmployeeButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ConfirmDeleteEmployeeButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(CancelAddEmployeeButton)
+                .addGap(6, 6, 6))
         );
 
         jPanel2.setBackground(new java.awt.Color(0, 102, 204));
@@ -378,6 +392,10 @@ public class UpdateEmployeeFrame extends javax.swing.JFrame implements AppFrame 
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldIDActionPerformed
 
+    private void ConfirmDeleteEmployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmDeleteEmployeeButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ConfirmDeleteEmployeeButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -395,14 +413,22 @@ public class UpdateEmployeeFrame extends javax.swing.JFrame implements AppFrame 
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UpdateEmployeeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmployeeInfoFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UpdateEmployeeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmployeeInfoFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UpdateEmployeeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmployeeInfoFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UpdateEmployeeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmployeeInfoFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -415,14 +441,16 @@ public class UpdateEmployeeFrame extends javax.swing.JFrame implements AppFrame 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UpdateEmployeeFrame();
+                new EmployeeInfoFrame();
             }
         });
     }
 
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CancelAddEmployeeButton;
     private javax.swing.JButton ConfirmAddEmployeeButton;
+    private javax.swing.JButton ConfirmDeleteEmployeeButton;
     private javax.swing.JComboBox<String> jComboBoxDepartment;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -468,6 +496,11 @@ public class UpdateEmployeeFrame extends javax.swing.JFrame implements AppFrame 
     @Override
     public void setCancelActionListener(ActionListener listener) {
         CancelAddEmployeeButton.addActionListener(listener);
+    }
+    
+    @Override
+    public void setDeleteActionListener(ActionListener listener){
+        ConfirmDeleteEmployeeButton.addActionListener(listener);
     }
 
     @Override
@@ -515,5 +548,63 @@ public class UpdateEmployeeFrame extends javax.swing.JFrame implements AppFrame 
         jSpinnerAge.setValue(Integer.valueOf(emp.getAge()));
         jSpinnerAbsentDays.setValue(Integer.valueOf(emp.getAbsentDays()));
     }
+    
+    @Override
+    public boolean validateFields() {
+        boolean valid = true;
+        Border borderValid = jComboBoxDepartment.getBorder();
+        Border borderInvalid = BorderFactory.createLineBorder(Color.red);
 
+        if (jTextFieldFirstName.getText().isEmpty()) {
+            jTextFieldFirstName.setBorder(borderInvalid);
+            valid = false;
+        } else {
+            jTextFieldFirstName.setBorder(borderValid);
+        }
+        if (jTextFieldMiddleName.getText().isEmpty()) {
+            jTextFieldMiddleName.setBorder(borderInvalid);
+            valid = false;
+        } else {
+            jTextFieldMiddleName.setBorder(borderValid);
+        }
+        if (jTextFieldLastName.getText().isEmpty()) {
+            jTextFieldLastName.setBorder(borderInvalid);
+            valid = false;
+        } else {
+            jTextFieldLastName.setBorder(borderValid);
+        }
+        if (jTextFieldEmail.getText().isEmpty()) {
+            jTextFieldEmail.setBorder(borderInvalid);
+            valid = false;
+        } else {
+            jTextFieldEmail.setBorder(borderValid);
+        }
+        if (jTextFieldPhoneNumber.getText().isEmpty()) {
+            jTextFieldPhoneNumber.setBorder(borderInvalid);
+            valid = false;
+        } else {
+            jTextFieldPhoneNumber.setBorder(borderValid);
+        }
+        if (jTextFieldPosition.getText().isEmpty()) {
+            jTextFieldPosition.setBorder(borderInvalid);
+            valid = false;
+        } else {
+            jTextFieldPosition.setBorder(borderValid);
+        }
+        if (jSpinnerSalary.getValue().toString().isEmpty()) {
+            jTextFieldPosition.setBorder(borderInvalid);
+            valid = false;
+        } else {
+            jTextFieldPosition.setBorder(borderValid);
+        }
+
+        return valid;
+    }
+
+    @Override
+    public String getID() {
+        return jTextFieldID.getText();
+    }
+
+    
 }

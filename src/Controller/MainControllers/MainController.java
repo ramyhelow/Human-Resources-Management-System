@@ -7,7 +7,7 @@ package Controller.MainControllers;
 
 import Controller.SubControllers.AddEmployeeController;
 import Controller.SubControllers.DeleteEmployeeController;
-import Controller.SubControllers.UpdateEmployeeController;
+import Controller.SubControllers.EmployeeInfoController;
 import Model.DBFacade;
 import View.Frames.AppFrame;
 import View.Frames.FrameFactory;
@@ -34,8 +34,7 @@ public class MainController {
         mainFrame = aFactory.getFrame("main");
         mainFrame.setLogoutListener(LogoutButtonAction());
         mainFrame.setAddIconListener(AddEmployeeAction());
-        mainFrame.setDeleteIconListener(DeleteEmployeeAction());
-        mainFrame.setUpdateIconListener(UpdateEmployeeAction());
+        mainFrame.setSearchIconListener(SearchEmployeeAction());
         fillTable();
         showMainFrame();
     }
@@ -140,11 +139,11 @@ public class MainController {
         
     }
     
-    public MouseListener UpdateEmployeeAction() {
+    public MouseListener SearchEmployeeAction() {
         return new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                UpdateEmployeeController.getUpdateEmployeeController();
+                EmployeeInfoController.getEmployeeInfoController();
             }
 
             @Override

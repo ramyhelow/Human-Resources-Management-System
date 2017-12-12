@@ -16,7 +16,7 @@ import javax.swing.border.Border;
  *
  * @author aburom
  */
-public class AddEmployeeFrame extends javax.swing.JFrame implements AppFrame{
+public class AddEmployeeFrame extends javax.swing.JFrame implements AppFrame {
 
     /**
      * Creates new form AddEmployee
@@ -26,6 +26,7 @@ public class AddEmployeeFrame extends javax.swing.JFrame implements AppFrame{
         initComponents();
         setLocationRelativeTo(this);
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -337,7 +338,6 @@ public class AddEmployeeFrame extends javax.swing.JFrame implements AppFrame{
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldPhoneNumberActionPerformed
 
-    
     /**
      * @param args the command line arguments
      */
@@ -451,73 +451,53 @@ public class AddEmployeeFrame extends javax.swing.JFrame implements AppFrame{
     @Override
     public boolean validateFields() {
         boolean valid = true;
+        Border borderValid = jComboBoxDepartment.getBorder();
         Border borderInvalid = BorderFactory.createLineBorder(Color.red);
-        Border borderValid = BorderFactory.createLineBorder(Color.BLACK);
-        if(jTextFieldFirstName.getText().isEmpty()){
+
+        if (jTextFieldFirstName.getText().isEmpty()) {
             jTextFieldFirstName.setBorder(borderInvalid);
-            valid=false;
-        }
-        else{
+            valid = false;
+        } else {
             jTextFieldFirstName.setBorder(borderValid);
         }
-        if(jTextFieldMiddleName.getText().isEmpty()){
+        if (jTextFieldMiddleName.getText().isEmpty()) {
             jTextFieldMiddleName.setBorder(borderInvalid);
-            valid=false;
-        }
-        else{
+            valid = false;
+        } else {
             jTextFieldMiddleName.setBorder(borderValid);
         }
-        if(jTextFieldLastName.getText().isEmpty()){
+        if (jTextFieldLastName.getText().isEmpty()) {
             jTextFieldLastName.setBorder(borderInvalid);
-            valid=false;
-        }
-        else{
+            valid = false;
+        } else {
             jTextFieldLastName.setBorder(borderValid);
         }
-        if(jTextFieldEmail.getText().isEmpty()){
+        if (jTextFieldEmail.getText().isEmpty()) {
             jTextFieldEmail.setBorder(borderInvalid);
-            valid=false;
-        }
-        else{
+            valid = false;
+        } else {
             jTextFieldEmail.setBorder(borderValid);
         }
-        if(jTextFieldPhoneNumber.getText().isEmpty()){
+        if (jTextFieldPhoneNumber.getText().isEmpty()) {
             jTextFieldPhoneNumber.setBorder(borderInvalid);
-            valid=false;
-        }
-        else{
+            valid = false;
+        } else {
             jTextFieldPhoneNumber.setBorder(borderValid);
         }
-        if(jTextFieldPosition.getText().isEmpty()){
+        if (jTextFieldPosition.getText().isEmpty()) {
             jTextFieldPosition.setBorder(borderInvalid);
-            valid=false;
-        }
-        else{
+            valid = false;
+        } else {
             jTextFieldPosition.setBorder(borderValid);
         }
-        if(jSpinnerSalary.getValue().toString().isEmpty()){
+        if (jSpinnerSalary.getValue().toString().isEmpty()) {
             jTextFieldPosition.setBorder(borderInvalid);
-            valid=false;
-        }
-        else{
+            valid = false;
+        } else {
             jTextFieldPosition.setBorder(borderValid);
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
         return valid;
     }
-    
-    
-
-    
-    
-
 
 }

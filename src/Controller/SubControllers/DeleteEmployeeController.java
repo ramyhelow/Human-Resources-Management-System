@@ -55,8 +55,10 @@ public class DeleteEmployeeController {
 
         if (db.deleteEmployee(deleteFrame.getID())) {
             JOptionPane.showMessageDialog(null, "Employee Deleted Successfully");
+            deleteFrame.clearFields();
         } else {
             JOptionPane.showMessageDialog(null, "Employee Doesnt Exist!");
+            deleteFrame.clearFields();
 
         }
     }

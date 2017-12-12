@@ -5,7 +5,6 @@
  */
 package Controller.SubControllers;
 
-
 import Controller.MainControllers.MainController;
 import Model.DBFacade;
 import View.Frames.AppFrame;
@@ -26,7 +25,7 @@ public class AddEmployeeController {
     static AddEmployeeController addEmployeeController = null;
     FrameFactory aFactory = new FrameFactory();
     AppFrame addFrame;
-    DBFacade db = DBFacade.getDBFacade();    
+    DBFacade db = DBFacade.getDBFacade();
 
     private AddEmployeeController() {
         addFrame = aFactory.getFrame("add");
@@ -34,10 +33,10 @@ public class AddEmployeeController {
         addFrame.setCancelActionListener(cancelEmployeeActionListener());
         showAddEmployeeFrame();
     }
-    
-    public static AddEmployeeController getAddEmployeeController(){
-        if(addEmployeeController==null){
-            addEmployeeController=new AddEmployeeController();
+
+    public static AddEmployeeController getAddEmployeeController() {
+        if (addEmployeeController == null) {
+            addEmployeeController = new AddEmployeeController();
         }
         addEmployeeController.showAddEmployeeFrame();
         return addEmployeeController;
@@ -53,11 +52,15 @@ public class AddEmployeeController {
 
     public void addEmployee() throws SQLException, ClassNotFoundException {
 
-        if (db.addEmployee(addFrame.getEmployeeData())) {
-            JOptionPane.showMessageDialog(null, "Employee Added Successfully");
-        } else {
-            JOptionPane.showMessageDialog(null, "Employee Not Added Successfully");
+        if (addFrame.validateFields()) {
+            if (db.addEmployee(addFrame.getEmployeeData())) {
+                JOptionPane.showMessageDialog(null, "Employee Added Successfully");
+            } else {
+                JOptionPane.showMessageDialog(null, "Employee Not Added Successfully");
 
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Invalid Data!");
         }
     }
 

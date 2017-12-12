@@ -10,7 +10,7 @@ import View.Frames.MainFrames.MainFrame;
 import View.Frames.SubFrames.AddEmployeeFrame;
 import View.Frames.SubFrames.DeleteEmployeeFrame;
 import View.Frames.SubFrames.SearchEmployeeFrame;
-import View.Frames.SubFrames.UpdateEmployeeFrame;
+import View.Frames.SubFrames.EmployeeInfoFrame;
 
 /**
  *
@@ -50,7 +50,7 @@ public class FrameFactory {
             return new SearchEmployeeFrame();
         }
         else if (frameName.equalsIgnoreCase("update")) {
-            return new UpdateEmployeeFrame();
+            return new EmployeeInfoFrame();
         }
         else {
             return null;
