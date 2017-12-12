@@ -9,7 +9,10 @@ import Entities.Employee;
 import Entities.Report;
 import View.Frames.AppFrame;
 import java.awt.Color;
+import java.awt.Point;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JTable;
@@ -698,9 +701,9 @@ public class EmployeeInfoFrame extends javax.swing.JFrame implements AppFrame {
     public void setCancelActionListener(ActionListener listener) {
         CancelAddEmployeeButton.addActionListener(listener);
     }
-    
+
     @Override
-    public void setDeleteActionListener(ActionListener listener){
+    public void setDeleteActionListener(ActionListener listener) {
         ConfirmDeleteEmployeeButton.addActionListener(listener);
     }
 
@@ -742,7 +745,7 @@ public class EmployeeInfoFrame extends javax.swing.JFrame implements AppFrame {
         jSpinnerAge.setValue(Integer.valueOf(emp.getAge()));
         jSpinnerAbsentDays.setValue(Integer.valueOf(emp.getAbsentDays()));
     }
-    
+
     @Override
     public boolean validateEmployeeFields() {
         boolean valid = true;
@@ -831,14 +834,14 @@ public class EmployeeInfoFrame extends javax.swing.JFrame implements AppFrame {
         }
         return valid;
     }
-    
+
     @Override
     public Report getReportData() {
         String id = jTextFieldID.getText();
         String name = jTextFieldReportName.getText();
         String type = jTextFieldReportType.getText();
         String text = jTextAreaReportText.getText();
-        Report report = new Report(id,name,type,text);
+        Report report = new Report(id, name, type, text);
         return report;
     }
 
@@ -870,8 +873,30 @@ public class EmployeeInfoFrame extends javax.swing.JFrame implements AppFrame {
     public void setClearReportActionListener(ActionListener listener) {
         ClearReportButton.addActionListener(listener);
     }
+
+//    public void setJTableListener(){
+//        jTableRep.addMouseListener(new MouseAdapter() {
+//            @Override
+//            public void mousePressed(MouseEvent mouseEvent) {
+//                JTable table = (JTable) mouseEvent.getSource();
+//                Point point = mouseEvent.getPoint();
+//                int row = table.rowAtPoint(point);
+//                if (mouseEvent.getClickCount() == 2) {
+//                    
+//                        String.valueOf(table.getValueAt(row, 0));
+//                        
+//                    
+//                }
+//            }
+//        });
+//    }    
+
+    @Override
+    public void setJTableMouseAdapter(MouseAdapter adapter) {
+        jTableRep.addMouseListener(adapter);
+    }
     
     
-    
-    
+
+
 }

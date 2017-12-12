@@ -79,8 +79,8 @@ public class DBFacade {
         return reports.addReport(report);
     }
     
-    public ResultSet getReport(String REP_ID) throws SQLException, ClassNotFoundException{
-        return reports.getReport(REP_ID);
+    public ResultSet getReportByID(String REP_ID) throws SQLException, ClassNotFoundException{
+        return reports.getReportByID(REP_ID);
     }
 }
 

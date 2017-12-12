@@ -11,12 +11,17 @@ import Entities.Report;
 import Model.DBFacade;
 import View.Frames.AppFrame;
 import View.Frames.FrameFactory;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 
 /**
  *
@@ -40,7 +45,7 @@ public class EmployeeInfoController {
         employeeInfoFrame.setDeleteActionListener(deleteAction());
         employeeInfoFrame.setSaveReportActionListener(saveReport());
         employeeInfoFrame.setClearReportActionListener(clearAction());
-        
+        employeeInfoFrame.setJTableMouseAdapter(JTableAction());
         showSearchFrame();
     }
 
@@ -52,9 +57,9 @@ public class EmployeeInfoController {
         return EmployeeInfoController;
     }
 
-    public void showSearchFrame(){
+    public void showSearchFrame() {
         searchFrame.showFrame();
-        
+
     }
 
     public void hideSearchFrame() {
@@ -69,8 +74,9 @@ public class EmployeeInfoController {
         fillTable(employeeInfoFrame.getID());
     }
 
-    public void hideEmployeeFrame() {
+    public void hideEmployeeFrame() throws SQLException, ClassNotFoundException {
         employeeInfoFrame.hideFrame();
+        MainController.getMainController();
     }
 
     public ActionListener searchAction() {
@@ -141,7 +147,13 @@ public class EmployeeInfoController {
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                hideEmployeeFrame();
+                try {
+                    hideEmployeeFrame();
+                } catch (SQLException ex) {
+                    Logger.getLogger(EmployeeInfoController.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(EmployeeInfoController.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         };
     }
@@ -151,9 +163,9 @@ public class EmployeeInfoController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int id = Integer.parseInt(employeeInfoFrame.getID());
-                if(JOptionPane.showConfirmDialog(null, "Are You Sure You Want To Delete Employee No. "+id+" ?")==JOptionPane.YES_OPTION){
+                if (JOptionPane.showConfirmDialog(null, "Are You Sure You Want To Delete Employee No. " + id + " ?") == JOptionPane.YES_OPTION) {
                     try {
-                        
+
                         db.deleteEmployee(String.valueOf(id));
                         JOptionPane.showMessageDialog(null, "Employee Deleted");
                         employeeInfoFrame.hideFrame();
@@ -163,7 +175,7 @@ public class EmployeeInfoController {
                     } catch (ClassNotFoundException ex) {
                         Logger.getLogger(EmployeeInfoController.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    
+
                 }
             }
         };
@@ -196,9 +208,9 @@ public class EmployeeInfoController {
             }
         };
     }
-    
-        public static void fillTable(String EMP_ID) throws SQLException, ClassNotFoundException {
-            employeeInfoFrame.fillTable(db.getReports(EMP_ID),db.getReportColumns());
+
+    public static void fillTable(String EMP_ID) throws SQLException, ClassNotFoundException {
+        employeeInfoFrame.fillTable(db.getReports(EMP_ID), db.getReportColumns());
     }
 
     private ActionListener clearAction() {
@@ -209,4 +221,27 @@ public class EmployeeInfoController {
             }
         };
     }
+    
+    public MouseAdapter JTableAction() {
+        return new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent mouseEvent) {
+                JTable table = (JTable) mouseEvent.getSource();
+                Point point = mouseEvent.getPoint();
+                int row = table.rowAtPoint(point);
+                if (mouseEvent.getClickCount() == 2) {
+                    try {
+                        ResultSet rs = db.getReportByID(String.valueOf(table.getValueAt(row, 0)));
+                        rs.first();
+                        JOptionPane.showMessageDialog(null, rs.getString("TEXT"));
+                    } catch (SQLException ex) {
+                        Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        };
+    }
+
 }

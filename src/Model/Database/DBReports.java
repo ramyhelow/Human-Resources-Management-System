@@ -41,7 +41,8 @@ public class DBReports {
             data[i][0] = aResultSet.getString("REP_ID");
             data[i][1] = aResultSet.getString("NAME");
             data[i][2] = aResultSet.getString("TYPE");
-            data[i][3] = aResultSet.getString("TEXT");
+            String timestamp = aResultSet.getTimestamp("DATEADDED").toString();
+            data[i][3] = timestamp.substring(0, timestamp.indexOf(" "));
             i++;
         }
 
@@ -50,7 +51,7 @@ public class DBReports {
 
     public String[] getReportColumns() {
         return new String[]{
-            "Rep_ID", "Name", "Type"
+            "Rep_ID", "Name", "Type","Date"
         };
     }
     
@@ -70,7 +71,7 @@ public class DBReports {
         }
     }
     
-    public ResultSet getReport(String REP_ID) throws SQLException, ClassNotFoundException{
+    public ResultSet getReportByID(String REP_ID) throws SQLException, ClassNotFoundException{
         aDBConnection = DBConnection.getInstance();
         aStatement = aDBConnection.getStatement();
         aResultSet = aStatement.

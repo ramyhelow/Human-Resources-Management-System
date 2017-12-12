@@ -15,6 +15,7 @@ public class Report {
     private String name;
     private String type;
     private String text;
+    private String date;
 
     public Report(String emp_id, String name, String type, String text) {
         this.emp_id = emp_id;
@@ -23,7 +24,13 @@ public class Report {
         this.text = text;
     }
     
-    
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
 
     public String getRep_id() {
         return rep_id;
