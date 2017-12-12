@@ -6,11 +6,16 @@
 package View.Frames.SubFrames;
 
 import Entities.Employee;
+import Entities.Report;
 import View.Frames.AppFrame;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
+import javax.swing.JLabel;
+import javax.swing.JTable;
 import javax.swing.border.Border;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -65,10 +70,24 @@ public class EmployeeInfoFrame extends javax.swing.JFrame implements AppFrame {
         ConfirmDeleteEmployeeButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabelLoginHeader = new javax.swing.JLabel();
+        jLabelLoginHeader1 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableRep = new javax.swing.JTable();
+        jLabel11 = new javax.swing.JLabel();
+        jTextFieldReportName = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jTextFieldReportType = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextAreaReportText = new javax.swing.JTextArea();
+        jLabel13 = new javax.swing.JLabel();
+        ConfirmSaveReportButton = new javax.swing.JButton();
+        ClearReportButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(0, 0));
 
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setAlignmentX(0.0F);
         jPanel1.setAlignmentY(0.0F);
 
@@ -141,7 +160,12 @@ public class EmployeeInfoFrame extends javax.swing.JFrame implements AppFrame {
 
         CancelAddEmployeeButton.setBackground(new java.awt.Color(0, 153, 204));
         CancelAddEmployeeButton.setForeground(new java.awt.Color(0, 0, 0));
-        CancelAddEmployeeButton.setText("Cancel");
+        CancelAddEmployeeButton.setText("Back");
+        CancelAddEmployeeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelAddEmployeeButtonActionPerformed(evt);
+            }
+        });
 
         jTextFieldEmail.setBackground(new java.awt.Color(204, 204, 204));
         jTextFieldEmail.setForeground(new java.awt.Color(0, 0, 0));
@@ -259,17 +283,19 @@ public class EmployeeInfoFrame extends javax.swing.JFrame implements AppFrame {
                         .addComponent(jTextFieldLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(36, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(89, 89, 89)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(ConfirmDeleteEmployeeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ConfirmAddEmployeeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(ConfirmAddEmployeeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ConfirmDeleteEmployeeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(CancelAddEmployeeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 11, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -282,9 +308,9 @@ public class EmployeeInfoFrame extends javax.swing.JFrame implements AppFrame {
                     .addComponent(jLabel2)
                     .addComponent(jTextFieldMiddleName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextFieldLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -313,13 +339,13 @@ public class EmployeeInfoFrame extends javax.swing.JFrame implements AppFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jComboBoxDepartment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
-                .addComponent(ConfirmAddEmployeeButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ConfirmDeleteEmployeeButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(42, 42, 42)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ConfirmAddEmployeeButton)
+                    .addComponent(ConfirmDeleteEmployeeButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(CancelAddEmployeeButton)
-                .addGap(6, 6, 6))
+                .addContainerGap())
         );
 
         jPanel2.setBackground(new java.awt.Color(0, 102, 204));
@@ -327,22 +353,159 @@ public class EmployeeInfoFrame extends javax.swing.JFrame implements AppFrame {
         jLabelLoginHeader.setFont(new java.awt.Font("URW Palladio L", 1, 36)); // NOI18N
         jLabelLoginHeader.setForeground(new java.awt.Color(255, 255, 255));
         jLabelLoginHeader.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelLoginHeader.setText("Update Employee");
+        jLabelLoginHeader.setText("Employee Info");
         jLabelLoginHeader.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(0, 0, 0)));
+
+        jLabelLoginHeader1.setFont(new java.awt.Font("URW Palladio L", 1, 36)); // NOI18N
+        jLabelLoginHeader1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelLoginHeader1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelLoginHeader1.setText("Employee Reports");
+        jLabelLoginHeader1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabelLoginHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jLabelLoginHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabelLoginHeader1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 13, Short.MAX_VALUE)
-                .addComponent(jLabelLoginHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jLabelLoginHeader1, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
+            .addComponent(jLabelLoginHeader, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jScrollPane1.setBorder(null);
+
+        jTableRep.setAutoCreateRowSorter(true);
+        jTableRep.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jTableRep.setForeground(new java.awt.Color(51, 51, 51));
+        jTableRep.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jTableRep.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jTableRep.setGridColor(new java.awt.Color(255, 255, 255));
+        jTableRep.setRowHeight(20);
+        jTableRep.setSelectionBackground(new java.awt.Color(0, 153, 204));
+        jScrollPane1.setViewportView(jTableRep);
+
+        jLabel11.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("Report Name");
+
+        jTextFieldReportName.setBackground(new java.awt.Color(204, 204, 204));
+        jTextFieldReportName.setForeground(new java.awt.Color(0, 0, 0));
+        jTextFieldReportName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldReportNameActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setText("Report Type");
+
+        jTextFieldReportType.setBackground(new java.awt.Color(204, 204, 204));
+        jTextFieldReportType.setForeground(new java.awt.Color(0, 0, 0));
+        jTextFieldReportType.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldReportTypeActionPerformed(evt);
+            }
+        });
+
+        jTextAreaReportText.setColumns(20);
+        jTextAreaReportText.setRows(5);
+        jScrollPane2.setViewportView(jTextAreaReportText);
+
+        jLabel13.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel13.setText("Report:");
+
+        ConfirmSaveReportButton.setBackground(new java.awt.Color(0, 153, 204));
+        ConfirmSaveReportButton.setForeground(new java.awt.Color(0, 0, 0));
+        ConfirmSaveReportButton.setText("Save");
+        ConfirmSaveReportButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConfirmSaveReportButtonActionPerformed(evt);
+            }
+        });
+
+        ClearReportButton.setBackground(new java.awt.Color(0, 153, 204));
+        ClearReportButton.setForeground(new java.awt.Color(0, 0, 0));
+        ClearReportButton.setText("Clear");
+        ClearReportButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ClearReportButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(52, 52, 52)
+                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldReportType, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldReportName, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(ConfirmSaveReportButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(ClearReportButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(jTextFieldReportName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(jTextFieldReportType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ConfirmSaveReportButton)
+                    .addComponent(ClearReportButton))
+                .addGap(50, 50, 50)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -350,14 +513,19 @@ public class EmployeeInfoFrame extends javax.swing.JFrame implements AppFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -395,6 +563,26 @@ public class EmployeeInfoFrame extends javax.swing.JFrame implements AppFrame {
     private void ConfirmDeleteEmployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmDeleteEmployeeButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ConfirmDeleteEmployeeButtonActionPerformed
+
+    private void jTextFieldReportNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldReportNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldReportNameActionPerformed
+
+    private void jTextFieldReportTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldReportTypeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldReportTypeActionPerformed
+
+    private void ConfirmSaveReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmSaveReportButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ConfirmSaveReportButtonActionPerformed
+
+    private void ClearReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearReportButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ClearReportButtonActionPerformed
+
+    private void CancelAddEmployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelAddEmployeeButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CancelAddEmployeeButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -449,11 +637,16 @@ public class EmployeeInfoFrame extends javax.swing.JFrame implements AppFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CancelAddEmployeeButton;
+    private javax.swing.JButton ClearReportButton;
     private javax.swing.JButton ConfirmAddEmployeeButton;
     private javax.swing.JButton ConfirmDeleteEmployeeButton;
+    private javax.swing.JButton ConfirmSaveReportButton;
     private javax.swing.JComboBox<String> jComboBoxDepartment;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -464,11 +657,17 @@ public class EmployeeInfoFrame extends javax.swing.JFrame implements AppFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelEmail;
     private javax.swing.JLabel jLabelLoginHeader;
+    private javax.swing.JLabel jLabelLoginHeader1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSpinner jSpinnerAbsentDays;
     private javax.swing.JSpinner jSpinnerAge;
     private javax.swing.JSpinner jSpinnerSalary;
+    private static javax.swing.JTable jTableRep;
+    private javax.swing.JTextArea jTextAreaReportText;
     private javax.swing.JTextField jTextFieldEmail;
     private javax.swing.JTextField jTextFieldFirstName;
     private javax.swing.JTextField jTextFieldID;
@@ -476,6 +675,8 @@ public class EmployeeInfoFrame extends javax.swing.JFrame implements AppFrame {
     private javax.swing.JTextField jTextFieldMiddleName;
     private javax.swing.JTextField jTextFieldPhoneNumber;
     private javax.swing.JTextField jTextFieldPosition;
+    private javax.swing.JTextField jTextFieldReportName;
+    private javax.swing.JTextField jTextFieldReportType;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -505,16 +706,9 @@ public class EmployeeInfoFrame extends javax.swing.JFrame implements AppFrame {
 
     @Override
     public void clearFields() {
-        jTextFieldFirstName.setText("");
-        jTextFieldMiddleName.setText("");
-        jTextFieldLastName.setText("");
-        jTextFieldEmail.setText("");
-        jTextFieldPhoneNumber.setText("");
-        jSpinnerSalary.setValue(0);
-        jTextFieldEmail.setText("");
-        jComboBoxDepartment.setSelectedItem(0);
-        jSpinnerAge.setValue(0);
-        jSpinnerAbsentDays.setValue(0);
+        jTextAreaReportText.setText("");
+        jTextFieldReportName.setText("");
+        jTextFieldReportType.setText("");
     }
 
     @Override
@@ -550,7 +744,7 @@ public class EmployeeInfoFrame extends javax.swing.JFrame implements AppFrame {
     }
     
     @Override
-    public boolean validateFields() {
+    public boolean validateEmployeeFields() {
         boolean valid = true;
         Border borderValid = jComboBoxDepartment.getBorder();
         Border borderInvalid = BorderFactory.createLineBorder(Color.red);
@@ -606,5 +800,78 @@ public class EmployeeInfoFrame extends javax.swing.JFrame implements AppFrame {
         return jTextFieldID.getText();
     }
 
+    @Override
+    public void setSaveReportActionListener(ActionListener listener) {
+        ConfirmSaveReportButton.addActionListener(listener);
+    }
+
+    @Override
+    public boolean validateReportFields() {
+        boolean valid = true;
+        Border borderValid = jComboBoxDepartment.getBorder();
+        Border borderInvalid = BorderFactory.createLineBorder(Color.red);
+
+        if (jTextFieldReportName.getText().isEmpty()) {
+            jTextFieldReportName.setBorder(borderInvalid);
+            valid = false;
+        } else {
+            jTextFieldReportName.setBorder(borderValid);
+        }
+        if (jTextFieldReportType.getText().isEmpty()) {
+            jTextFieldReportType.setBorder(borderInvalid);
+            valid = false;
+        } else {
+            jTextFieldReportType.setBorder(borderValid);
+        }
+        if (jTextAreaReportText.getText().isEmpty()) {
+            jTextAreaReportText.setBorder(borderInvalid);
+            valid = false;
+        } else {
+            jTextAreaReportText.setBorder(borderValid);
+        }
+        return valid;
+    }
+    
+    @Override
+    public Report getReportData() {
+        String id = jTextFieldID.getText();
+        String name = jTextFieldReportName.getText();
+        String type = jTextFieldReportType.getText();
+        String text = jTextAreaReportText.getText();
+        Report report = new Report(id,name,type,text);
+        return report;
+    }
+
+    @Override
+    public void fillTable(Object[][] employeeData, String[] employeeColumns) {
+//        jTableEmp.setModel(new DefaultTableModel());
+        DefaultTableModel tableModel = new DefaultTableModel(employeeData, employeeColumns) {
+
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                //all cells false
+                return false;
+            }
+        };
+        jTableRep.setModel(tableModel);
+
+        jTableRep.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+
+        jTableRep.setAutoCreateRowSorter(true);
+
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        for (int x = 0; x < employeeColumns.length; x++) {
+            jTableRep.getColumnModel().getColumn(x).setCellRenderer(centerRenderer);
+        }
+    }
+
+    @Override
+    public void setClearReportActionListener(ActionListener listener) {
+        ClearReportButton.addActionListener(listener);
+    }
+    
+    
+    
     
 }

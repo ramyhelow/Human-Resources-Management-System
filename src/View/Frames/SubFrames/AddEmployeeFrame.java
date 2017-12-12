@@ -449,7 +449,7 @@ public class AddEmployeeFrame extends javax.swing.JFrame implements AppFrame {
     }
 
     @Override
-    public boolean validateFields() {
+    public boolean validateEmployeeFields() {
         boolean valid = true;
         Border borderValid = jComboBoxDepartment.getBorder();
         Border borderInvalid = BorderFactory.createLineBorder(Color.red);

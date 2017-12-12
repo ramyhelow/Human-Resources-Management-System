@@ -6,6 +6,7 @@
 package View.Frames;
 
 import Entities.Employee;
+import Entities.Report;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
 
@@ -22,10 +23,12 @@ public interface AppFrame {
     default public void setConfirmActionListener(MouseListener listener){}
     default public void setDeleteActionListener(ActionListener listener){}
     default public void setCancelActionListener(ActionListener listener){}
+    default public void setSaveReportActionListener(ActionListener listener){}
+    default public void setClearReportActionListener(ActionListener listener){}
     
     default public void clearFields(){}
     
-    default public void fillTable(Object[][] employeeData, String[] employeeColumns){}
+    default public void fillTable(Object[][] Data, String[] Columns){}
     
     default public String getUsername(){
         return null;
@@ -47,8 +50,17 @@ public interface AppFrame {
     
     default public void setSearchIconListener(MouseListener listener){}
     
-    default public boolean validateFields(){
+    default public boolean validateEmployeeFields(){
         return true;
     }
+    
+    default public boolean validateReportFields(){
+        return true;
+    }
+    
+    default public Report getReportData(){
+        return null;
+    }
+    
     
 }

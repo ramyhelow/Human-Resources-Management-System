@@ -7,6 +7,7 @@ package Controller.SubControllers;
 
 import Controller.MainControllers.MainController;
 import Entities.Employee;
+import Entities.Report;
 import Model.DBFacade;
 import View.Frames.AppFrame;
 import View.Frames.FrameFactory;
@@ -26,10 +27,10 @@ public class EmployeeInfoController {
     static EmployeeInfoController EmployeeInfoController = null;
     FrameFactory aFactory = new FrameFactory();
     AppFrame searchFrame;
-    AppFrame employeeInfoFrame;
-    DBFacade db = DBFacade.getDBFacade();
+    static AppFrame employeeInfoFrame;
+    static DBFacade db = DBFacade.getDBFacade();
 
-    private EmployeeInfoController() {
+    private EmployeeInfoController() throws SQLException, ClassNotFoundException {
         searchFrame = aFactory.getFrame("search");
         employeeInfoFrame = aFactory.getFrame("update");
         searchFrame.setConfirmActionListener(searchAction());
@@ -37,10 +38,13 @@ public class EmployeeInfoController {
         employeeInfoFrame.setConfirmActionListener(updateAction());
         employeeInfoFrame.setCancelActionListener(cancelUpdateAction());
         employeeInfoFrame.setDeleteActionListener(deleteAction());
+        employeeInfoFrame.setSaveReportActionListener(saveReport());
+        employeeInfoFrame.setClearReportActionListener(clearAction());
+        
         showSearchFrame();
     }
 
-    public static EmployeeInfoController getEmployeeInfoController() {
+    public static EmployeeInfoController getEmployeeInfoController() throws SQLException, ClassNotFoundException {
         if (EmployeeInfoController == null) {
             EmployeeInfoController = new EmployeeInfoController();
         }
@@ -48,19 +52,21 @@ public class EmployeeInfoController {
         return EmployeeInfoController;
     }
 
-    public void showSearchFrame() {
+    public void showSearchFrame(){
         searchFrame.showFrame();
+        
     }
 
     public void hideSearchFrame() {
         searchFrame.hideFrame();
     }
 
-    public void showUpdateFrame() {
+    public void showEmployeeFrame() throws SQLException, ClassNotFoundException {
         employeeInfoFrame.showFrame();
+        fillTable(employeeInfoFrame.getID());
     }
 
-    public void hideUpdateFrame() {
+    public void hideEmployeeFrame() {
         employeeInfoFrame.hideFrame();
     }
 
@@ -76,7 +82,7 @@ public class EmployeeInfoController {
                         JOptionPane.showMessageDialog(null, "Employee Exists");
                         hideSearchFrame();
                         employeeInfoFrame.setEmployeeData(emp);
-                        showUpdateFrame();
+                        showEmployeeFrame();
                         searchFrame.clearFields();
                     } else {
                         JOptionPane.showMessageDialog(null, "Employee Doesn't Exist");
@@ -99,10 +105,10 @@ public class EmployeeInfoController {
                 try {
 
                     Employee emp = employeeInfoFrame.getEmployeeData();
-                    if (employeeInfoFrame.validateFields()) {
+                    if (employeeInfoFrame.validateEmployeeFields()) {
                         if (db.updateEmployee(emp)) {
                             JOptionPane.showMessageDialog(null, "Employee Updated Successfully");
-                            hideUpdateFrame();
+                            hideEmployeeFrame();
                             MainController.getMainController();
                         } else {
                             JOptionPane.showMessageDialog(null, "Update Not Successful");
@@ -134,13 +140,12 @@ public class EmployeeInfoController {
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                hideUpdateFrame();
+                hideEmployeeFrame();
             }
         };
     }
 
     private ActionListener deleteAction() {
-        System.out.println("Delete Button Pressed");
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -159,6 +164,47 @@ public class EmployeeInfoController {
                     }
                     
                 }
+            }
+        };
+    }
+
+    private ActionListener saveReport() {
+        return new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+
+                    Report report = employeeInfoFrame.getReportData();
+                    if (employeeInfoFrame.validateReportFields()) {
+                        if (db.addReport(report)) {
+                            JOptionPane.showMessageDialog(null, "Report Added Successfully");
+                            fillTable(employeeInfoFrame.getID());
+                            MainController.getMainController();
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Update Not Successful");
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Invalid Data!");
+                    }
+
+                } catch (SQLException ex) {
+                    Logger.getLogger(EmployeeInfoController.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(EmployeeInfoController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        };
+    }
+    
+        public static void fillTable(String EMP_ID) throws SQLException, ClassNotFoundException {
+            employeeInfoFrame.fillTable(db.getReports(EMP_ID),db.getReportColumns());
+    }
+
+    private ActionListener clearAction() {
+        return new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                employeeInfoFrame.clearFields();
             }
         };
     }

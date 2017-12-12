@@ -14,6 +14,8 @@ import View.Frames.FrameFactory;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -142,7 +144,13 @@ public class MainController {
         return new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                EmployeeInfoController.getEmployeeInfoController();
+                try {
+                    EmployeeInfoController.getEmployeeInfoController();
+                } catch (SQLException ex) {
+                    Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
 
             @Override

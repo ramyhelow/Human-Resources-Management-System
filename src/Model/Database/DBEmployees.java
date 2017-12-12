@@ -117,7 +117,6 @@ public class DBEmployees {
 //        aResultSet.beforeFirst();
 aResultSet.beforeFirst();
         if(aResultSet.next()){
-            System.out.println("ITEM FOUND!@!!");
         String id = String.valueOf(aResultSet.getInt("ID"));
         String fName = aResultSet.getString("FName");
         String mName = aResultSet.getString("MName");
@@ -161,4 +160,5 @@ aResultSet.beforeFirst();
             return false;
         }
     }
+    
 }

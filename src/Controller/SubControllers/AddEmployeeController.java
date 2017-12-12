@@ -52,7 +52,7 @@ public class AddEmployeeController {
 
     public void addEmployee() throws SQLException, ClassNotFoundException {
 
-        if (addFrame.validateFields()) {
+        if (addFrame.validateEmployeeFields()) {
             if (db.addEmployee(addFrame.getEmployeeData())) {
                 JOptionPane.showMessageDialog(null, "Employee Added Successfully");
             } else {

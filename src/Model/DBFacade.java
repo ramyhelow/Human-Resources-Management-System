@@ -6,8 +6,11 @@
 package Model;
 
 import Entities.Employee;
+import Entities.Report;
 import Model.Database.DBEmployees;
+import Model.Database.DBReports;
 import Model.Database.DBUsers;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
@@ -21,10 +24,12 @@ public class DBFacade {
     private static DBFacade dbFacade;
     private DBUsers users;
     private DBEmployees employees;
+    private DBReports reports;
 
     private DBFacade() {
         users = new DBUsers();
         employees = new DBEmployees();
+        reports = new DBReports();
     }
     
     public static DBFacade getDBFacade(){
@@ -60,6 +65,22 @@ public class DBFacade {
     
     public boolean updateEmployee(Employee emp) throws SQLException, ClassNotFoundException{
         return employees.UpdateEmployee(emp);
+    }
+    
+    public Object[][] getReports(String EMP_ID) throws SQLException, ClassNotFoundException{
+        return reports.getReports(EMP_ID);
+    }
+    
+    public String[] getReportColumns() throws SQLException, ClassNotFoundException{
+        return reports.getReportColumns();
+    }
+    
+    public boolean addReport(Report report) throws SQLException, ClassNotFoundException{
+        return reports.addReport(report);
+    }
+    
+    public ResultSet getReport(String REP_ID) throws SQLException, ClassNotFoundException{
+        return reports.getReport(REP_ID);
     }
 }
 
